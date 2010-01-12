@@ -1,0 +1,18 @@
+EXAMPLES
+
+This directory contains a simple example of using jcoverage to
+instrument an application.
+
+To run the example:
+
+ant
+
+The application and its tests will be compiled, jcoverage will
+instrument the application, the instrumented application will then be
+tested, and a jcoverage report produced in HTML and XML.
+
+The jcoverage reports can be found in:
+
+build/coverage/index.html
+build/coverage/coverage.xml
+

@@ -1,0 +1,42 @@
+<project name="helium-example" default="dist" basedir=".">
+
+  <property file="build.properties"/>
+
+  <property name="src" value="./src" />
+
+  <property name="build.home" location="./build" />
+  <property name="build.classes" location="${build.home}/classes" />
+
+  <target name="prepare" description="Prepare">
+    <tstamp />
+    <mkdir dir="${build.home}" />
+    <mkdir dir="${build.classes}" />
+  </target>
+
+  <path id="src.path">
+    <pathelement location="${src}" />
+  </path>
+
+  <path id="compile.classpath">
+    <fileset dir="./lib"/>
+  </path>
+
+  <target name="compile" depends="prepare" description="Compile">
+    <javac destdir="${build.classes}" nowarn="on" debug="${debug}">
+      <src refid="src.path" />
+      <classpath refid="compile.classpath" />
+    </javac>
+  </target>
+
+  <target name="dist" depends="clean,compile" description="Create distribution">
+    <war destfile="${build.home}/${ant.project.name}.war"
+         basedir="resources/content" webxml="resources/webapp/web.xml">
+      <lib dir="lib"/>
+      <classes dir="${build.classes}"/>
+    </war>
+  </target>
+
+  <target name="clean" description="Clean up">
+    <delete dir="${build.home}" />
+  </target>
+</project>

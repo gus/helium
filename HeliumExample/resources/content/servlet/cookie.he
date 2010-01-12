@@ -1,0 +1,45 @@
+<article>
+  <include article="html.he">
+    <var name="html.title" value="Servlet: Cookie"/>
+    <var name="html.body">
+      <div id="info">
+        <p>Cookies can be obtained and set via the Cookie Action. Obtaining
+        a Cookie is defined simply as obtaining the value of the Cookie.</p>
+
+        <p>Setting a Cookie can be done by providing just the name and value
+        or you can optionally define any and all the following: domain,
+        path, max-age, and secureness.</p>
+      </div>
+
+      <!-- Example 1 -->
+      <h3>Example 1: Setting and retrieving a cookie</h3>
+
+      <p>This example will retrieve the value of cookie you define. To define
+      a cookie, provide the value below.</p>
+
+      <p><i>Refresh the page after setting the value to see your value in the output.</i></p>
+
+      <form action="cookie.he" method="get">
+        <b>Value:</b> <input type="text" name="cookieValue" size="30"/>
+        <input type="submit" value="Submit"/>
+      </form>
+      <var name="cookieName" value="myCookie"/>
+      <var name="cookieValue"><parameter name="cookieValue"/></var>
+      <when var="cookieValue" exists="true">
+        <cookie name="${cookieName}" value="${cookieValue}"/>
+      </when>
+      <include article="example-output.he">
+        <var name="example.index" value="1"/>
+        <var name="example.message">Setting and Retrieving ${cookieName}</var>
+        <var name="example.text"><![CDATA[
+  &lt;article&gt;
+    &lt;cookie name=&quot;]]>${cookieName}<![CDATA[&quot
+      value=&quot;]]>${cookieValue}<![CDATA[&quot/&gt;
+    &lt;cookie name=&quot;]]>${cookieName}<![CDATA[&quot/&gt;
+  &lt;/article&gt;]]></var>
+        <var name="example.output"><cookie name="${cookieName}"/></var>
+      </include>
+
+    </var>
+  </include>
+</article>

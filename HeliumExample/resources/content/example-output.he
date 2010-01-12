@@ -1,0 +1,11 @@
+<article>
+  <include article="example.he"/>
+  <var name="context-path"><request-info name="context-path"/></var>
+  <fieldset id="code" class="output">
+    <legend>
+      Example ${example.index}: Output
+      <span class="tryit"><a href="${context-path}/tryit-process.he?tryItTxt=${example.text}">Try It</a></span>
+    </legend>
+<pre>${example.output}</pre>
+  </fieldset>
+</article>

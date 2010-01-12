@@ -1,0 +1,17 @@
+10/2/98: Everything's just getting started.
+	ServletHarness 
+
+	TestRequest --	
+		o Needs lots of cleaning, especially around the issue
+			of the initial construction of the request.
+
+	TestResponse --
+		o Methods to compare response to Files, Strings, and
+			byte arrays.
+		o Methods to interrogate cookies, headers, and content type.
+
+
+	General --
+		o Write an example, calling the EnvDumpServlet.
+		o Sessions -- how can we handle Sessions?
+

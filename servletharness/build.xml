@@ -1,0 +1,48 @@
+<project name="servletharness" default="dist" basedir=".">
+
+  <property name="title" value="Servlet Harness" />
+
+  <property name="debug" value="off" />
+
+  <property name="src.api" value="./src" />
+
+  <property name="build.home" location="./build" />
+  <property name="build.classes" location="${build.home}/classes" />
+
+  <target name="prepare" description="Prepare">
+    <tstamp />
+    <mkdir dir="${build.home}" />
+    <mkdir dir="${build.classes}" />
+  </target>
+
+  <path id="src.path">
+    <pathelement location="${src.api}" />
+  </path>
+
+  <path id="compile.classpath">
+    <pathelement location="./servlet.jar"/>
+  </path>
+
+  <target name="compile" depends="prepare" description="Compile">
+    <javac destdir="${build.classes}" nowarn="on" debug="${debug}">
+      <src refid="src.path" />
+      <classpath refid="compile.classpath" />
+    </javac>
+  </target>
+
+  <target name="dist" depends="clean,compile" description="Create distribution">
+    <jar jarfile="${build.home}/${ant.project.name}.jar" basedir="${build.classes}"/>
+  </target>
+
+  <target name="dist-debug" description="Create distribution with debugging">
+    <echo level="warning" message="Debugging: on" />
+    <antcall target="dist">
+      <param name="debug" value="yes" />
+    </antcall>
+  </target>
+
+  <target name="clean" description="Clean up">
+    <delete dir="${build.home}" />
+  </target>
+
+</project>

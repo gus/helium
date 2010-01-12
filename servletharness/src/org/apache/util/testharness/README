@@ -1,0 +1,15 @@
+	The purpose of this library is to provide a framework
+for feeding canned requests to a servlet and testing the responses.
+This makes it possible to write unit tests and regression tests
+for servlets, something no other tool I'm aware of supports.
+
+	This code is not for performance testing, and really
+doesn't care what environment you use to run your servlet. It makes
+calls directly to the Servlet interface; it's a "servlet runner"
+focused on testing for correctness.
+
+	The example uses the JUnit testing framework, which
+is available at http://members.pingnet.ch/gamma/junit.htm.
+
+
+Robert Crawford <crawford@iac.net>
